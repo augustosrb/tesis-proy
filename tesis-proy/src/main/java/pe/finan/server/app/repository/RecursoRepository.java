@@ -20,7 +20,12 @@ public class RecursoRepository  implements IReadable<Recurso>,IWriteable<Recurso
 
 	@Override
 	public List<Recurso> get(int id) {
-		return null;
+		Object[] args = new Object[] {};
+		StringBuilder sql = new StringBuilder("exec [dbo].[fc_sp_listar_asignados] ?;");
+		
+		args  = HelperJDBC.appendValue(args,id);
+			
+		return jdbcTemplate.query(sql.toString(), args,new RecursoMapper());
 	}
 
 	@Override

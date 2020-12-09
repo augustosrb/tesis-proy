@@ -30,6 +30,12 @@ public class RecursoController {
 	public List<Recurso> consultar() {
 		return repository.getAll();
 	}
+	
+	@GetMapping("/")
+	@ResponseBody
+	public List<Recurso> consultarbyId(int id) {
+		return repository.get(id);
+	}
 
 	@PostMapping(value = "/")
 	@ResponseBody
